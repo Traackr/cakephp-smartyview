@@ -49,6 +49,14 @@ class SmartyView extends View
 		$this->Smarty = new Smarty();
 		$this->_smartyVersion();
 
+        if (!is_dir(TMP.'smarty'.DS.'compile'.DS)) {
+            mkdir(TMP.'smarty'.DS.'compile'.DS);
+        }
+
+        if (!is_dir(TMP.'smarty'.DS.'cache'.DS)) {
+            mkdir(TMP.'smarty'.DS.'cache'.DS);
+        }
+
 		$this->ext= '.tpl';
 		$this->Smarty->compile_dir = TMP.'smarty'.DS.'compile'.DS;
 		$this->Smarty->cache_dir = TMP.'smarty'.DS.'cache'.DS;
