@@ -168,6 +168,8 @@ class SmartyView extends View
             list($plugin, $helper) = $this->pluginSplit($helper);
             $helperClass = $helper. 'Helper';
             if (property_exists($this, $helper) && method_exists($this->{$helper}, '_registerSmartyFunctions')) {
+                //$this->{$helper}->_registerSmartyFunctions(&$this->Smarty);
+                // PHP 5.4 compatible
                 $this->{$helper}->_registerSmartyFunctions($this->Smarty);
 			}
 		}
