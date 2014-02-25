@@ -6,7 +6,7 @@
  *
  * Original code is http://cakeforge.org/snippet/detail.php?type=snippet&id=6
  * and modified to work with CakePHP 2.0 and later as plugin.
- * 
+ *
  * @author       Daiji Hirata
  * @package      smartyview
  * @subpackage   view
@@ -18,6 +18,7 @@
  * Include Smarty.
  */
 App::import('Vendor', 'Smarty', array('file' => 'smarty'.DS.'Smarty.class.php'));
+App::uses('SmartyBaseHelper', 'SmartyView.View/Helper');
 
 /**
  * CakePHP Smarty view class
@@ -90,10 +91,10 @@ class SmartyView extends View
  */
     function _render($___viewFn, $___data_for_view = array())
 	{
-        // use cake's render for .ctp files. 
-        if (preg_match('/\.ctp$/', $___viewFn)) { 
+        // use cake's render for .ctp files.
+        if (preg_match('/\.ctp$/', $___viewFn)) {
             return parent::_render($___viewFn, $___data_for_view);
-        } 
+        }
         if ($this->helpers != false)
 		{
             $this->loadHelpers();
@@ -149,10 +150,10 @@ class SmartyView extends View
         }
 
 		$res = $this->Smarty->fetch($___viewFn);
-        
+
         return $res;
 	}
-	
+
 	/**
 	 * checks for existence of special method on loaded helpers, invoking it if it exists
 	 * this allows helpers to register smarty functions, modifiers, blocks, etc.
@@ -182,7 +183,7 @@ class SmartyView extends View
         // Version 2.6.x
         if (isset($this->Smarty->_version)) {
             $this->smartyVersion = $this->Smarty->_version;
-        } 
+        }
         // Version 3.1.x
         if (defined('Smarty::SMARTY_VERSION')) {
             $v = constant('Smarty::SMARTY_VERSION');
